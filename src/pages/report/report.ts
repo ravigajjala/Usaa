@@ -3,11 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 // import _ from 'lodash';
 import { FoodReportService } from '../../services/foodreport.service';
 
-@IonicPage({
-  name: 'report',
-  segment: 'report',
-  defaultHistory: ['home']
-})
+@IonicPage()
 
 @Component({
   selector: 'page-report',
@@ -21,7 +17,7 @@ export class ReportPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ReportPage');   
+    console.log('ionViewDidLoad ReportPage');
   }
 
 }

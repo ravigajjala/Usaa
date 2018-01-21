@@ -11,44 +11,82 @@
       <input type="text" name="foodname" [(ngModel)]="" />
       <button (click)="searchFood()">Search</button>
     </form> -->
-    <ion-searchbar
-      [(ngModel)]="searchFoodName"
-      [showCancelButton]="shouldShowCancel"
-      (ionInput)="searchFood($event)"></ion-searchbar>
+    <ion-searchbar [(ngModel)]="searchFoodName" [showCancelButton]="shouldShowCancel" (ionInput)="searchFood($event)"></ion-searchbar>
   </div>
-  
+
   <p>
     <span class="error">{{errorMessage}}</span>
   </p>
+
+
   <div>
     <ion-grid>
-      <div *ngIf="foodList && foodList.length > 0">
-          <p>
-              <span class="strong">Food Search Result - </span>
-          </p>
-          <ion-row>
-              <ion-col>
-                <b>Nutrient ID</b>
-              </ion-col>
-              <ion-col>
-                <b>Name</b>
-              </ion-col>
-          </ion-row>
-          <hr/>
-          <ion-row class="row-bg" *ngFor="let item of foodList" (click)="goToReport(item)">
-              <ion-col>
-                {{item.nutrient_id}}
-              </ion-col>
-              <ion-col>
-                {{item.name}}
-              </ion-col>
-          </ion-row>
+      <div *ngIf="searchFoodName && foodList && foodList.length > 0">
+        <p>
+          <span class="strong">Food Search Result - </span>
+        </p>
+        <ion-row>
+          <ion-col>
+            <b>Nutrient ID</b>
+          </ion-col>
+          <ion-col>
+            <b>Name</b>
+          </ion-col>
+          <ion-col>
+            <b>Add to Favourite</b>
+          </ion-col>
+        </ion-row>
+        <hr/>
+        <ion-row class="row-bg" *ngFor="let item of foodList" (click)="goToReport(item)">
+          <ion-col>
+            {{item.nutrient_id}}
+          </ion-col>
+          <ion-col>
+            {{item.name}}
+          </ion-col>
+          <ion-col>
+            <button (click)="setFavouriteFood($event, item)">Favourite</button>
+          </ion-col>
+        </ion-row>
       </div>
-      <p *ngIf="init && foodList == 0" >
-          <span class="strong">No Result Found!</span>
+      <p *ngIf="init && foodList == 0">
+        <span class="strong">No Result Found!</span>
       </p>
     </ion-grid>
   </div>
 
-  
+
+  <div>
+    <ion-grid>
+      <div *ngIf="favouriteFoodList && favouriteFoodList.length > 0">
+        <p>
+          <span class="strong">Favourite Foods - </span>
+        </p>
+        <ion-row>
+          <ion-col>
+            <b>Nutrient ID</b>
+          </ion-col>
+          <ion-col>
+            <b>Name</b>
+          </ion-col>
+          <ion-col>
+            <b>Remove</b>
+          </ion-col>
+        </ion-row>
+        <hr/>
+        <ion-row class="row-bg" *ngFor="let item of favouriteFoodList" (click)="goToReport(item)">
+          <ion-col>
+            {{item.nutrient_id}}
+          </ion-col>
+          <ion-col>
+            {{item.name}}
+          </ion-col>
+          <ion-col>
+            <button (click)="removeFavouriteFood($event, item)">Remove</button>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-grid>
+  </div>
+
 </ion-content>

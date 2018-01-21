@@ -10,9 +10,9 @@ import { ReportPage } from './report';
     IonicPageModule.forChild(ReportPage),
   ],
   entryComponents: [
-    
+
   ]
 })
-export class ReportPageModule {}
+export class ReportPageModule { }
 
 

@@ -1,41 +1,39 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Basic Report</ion-title>
+    <ion-title>Food Report Details!</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  Food Data
-
   <ion-grid>
-      <div *ngIf="food && food.measures && food.measures.length > 0">
-          <p>
-              <span class="strong">Food Measures</span>
-          </p>
-          <ion-row>
-              <ion-col>
-                <b>Name</b>
-              </ion-col>
-              <ion-col>
-                <b>Value In Gram</b>
-              </ion-col>
-          </ion-row>
-          <hr/>
-          <ion-row class="row-bg" *ngFor="let item of food.measures" >
-              <ion-col>
-                {{item.label}}
-              </ion-col>
-              <ion-col>
-                {{item.value}}
-              </ion-col>
-          </ion-row>
-      </div>
-      <p *ngIf="init && foodList == 0" >
-          <span class="strong">No Result Found!</span>
+    <div *ngIf="food && food.measures && food.measures.length > 0">
+      <p>
+        <span class="strong">Food Measures</span>
       </p>
-    </ion-grid>
-  
+      <ion-row>
+        <ion-col>
+          <b>Name</b>
+        </ion-col>
+        <ion-col>
+          <b>Value In Gram</b>
+        </ion-col>
+      </ion-row>
+      <hr/>
+      <ion-row class="row-bg" *ngFor="let item of food.measures">
+        <ion-col>
+          {{item.label}}
+        </ion-col>
+        <ion-col>
+          {{item.value}}
+        </ion-col>
+      </ion-row>
+    </div>
+    <p *ngIf="!food || !food.measures">
+      <span class="strong">No Food Selected!</span>
+    </p>
+  </ion-grid>
+
 </ion-content>

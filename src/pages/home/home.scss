@@ -12,6 +12,13 @@ page-home {
     font-weight: bold;
 }
 
-.row-bg:even {
+.row-bg:nth-child(odd) {
     background: #e0e0e0 !important;
+}
+
+button {
+    background: #9f9fff;
+    padding: 5px;
+    border: 1px solid #000;
+    border-radius: 15px;
 }

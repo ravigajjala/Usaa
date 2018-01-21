@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h2>Food Search!</h2>
+  <div>
+    <!-- <form>
+      <input type="text" name="foodname" [(ngModel)]="" />
+      <button (click)="searchFood()">Search</button>
+    </form> -->
+    <ion-searchbar
+      [(ngModel)]="searchFoodName"
+      [showCancelButton]="shouldShowCancel"
+      (ionInput)="searchFood($event)"></ion-searchbar>
+  </div>
+  
+  <p>
+    <span class="error">{{errorMessage}}</span>
+  </p>
+  <div>
+    <ion-grid>
+      <div *ngIf="foodList && foodList.length > 0">
+          <p>
+              <span class="strong">Food Search Result - </span>
+          </p>
+          <ion-row>
+              <ion-col>
+                <b>Nutrient ID</b>
+              </ion-col>
+              <ion-col>
+                <b>Name</b>
+              </ion-col>
+          </ion-row>
+          <hr/>
+          <ion-row class="row-bg" *ngFor="let item of foodList" (click)="goToReport(item)">
+              <ion-col>
+                {{item.nutrient_id}}
+              </ion-col>
+              <ion-col>
+                {{item.name}}
+              </ion-col>
+          </ion-row>
+      </div>
+      <p *ngIf="init && foodList == 0" >
+          <span class="strong">No Result Found!</span>
+      </p>
+    </ion-grid>
+  </div>
+
+  
+</ion-content>

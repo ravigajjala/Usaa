@@ -51,6 +51,9 @@ export class FoodReportService {
     }
 
     setFavouriteFoods(food) {
+        if (_.filter(this.favouriteFoods, function (o) { return o.nutrient_id === food.nutrient_id; }).length > 0) {
+            return false;
+        }
         this.favouriteFoods.push(food);
         localStorage.setItem('favouriteFoods', JSON.stringify(this.favouriteFoods));
     }

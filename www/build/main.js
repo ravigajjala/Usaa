@@ -68,6 +68,9 @@ var FoodReportService = (function () {
         return this.selectedFoodData;
     };
     FoodReportService.prototype.setFavouriteFoods = function (food) {
+        if (__WEBPACK_IMPORTED_MODULE_2_lodash___default.a.filter(this.favouriteFoods, function (o) { return o.nutrient_id === food.nutrient_id; }).length > 0) {
+            return false;
+        }
         this.favouriteFoods.push(food);
         localStorage.setItem('favouriteFoods', JSON.stringify(this.favouriteFoods));
     };
@@ -83,9 +86,10 @@ var FoodReportService = (function () {
     };
     FoodReportService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
     ], FoodReportService);
     return FoodReportService;
+    var _a;
 }());
 
 //# sourceMappingURL=foodreport.service.js.map
